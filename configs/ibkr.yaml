@@ -1,0 +1,20 @@
+# Connexion TWS / IB Gateway — paper trading par défaut.
+host: "127.0.0.1"
+port: 7497
+client_id: 1
+
+# Requêtes historiques (format IBKR)
+data_frequency: "1 day"
+history_duration: "15 Y"
+data_type: "TRADES"
+
+# Respect pacing IBKR (secondes entre requêtes)
+request_sleep_seconds: 0.5
+
+# Chemins relatifs à la racine du projet Momentum_Strategy
+paths:
+  raw: "data/raw"
+  processed: "data/processed"
+
+# Cache : considéré à jour si la dernière barre n'est pas plus vieille que N jours calendaires
+cache_max_age_calendar_days: 4

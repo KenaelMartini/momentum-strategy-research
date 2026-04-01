@@ -1,0 +1,15 @@
+# Thèses : breadth, pas de shorts, shorts légers, eps — Train 1 uniquement.
+# python -m momentum_strategy sensitivity-batch --presets configs/sensitivity_thesis_train1.yaml \
+#   --start 2015-01-01 --end 2019-12-31 --output results/sensitivity/thesis_train1
+
+runs:
+  - name: thesis_baseline_reference
+  - name: thesis_breadth_wide
+    n_long: 12
+    n_short: 4
+  - name: thesis_short_off
+    n_short: 0
+  - name: thesis_short_light
+    ed_short_notional_scale: 0.25
+  - name: thesis_eps_loose
+    ed_signal_entry_eps: 0.015

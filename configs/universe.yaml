@@ -1,0 +1,98 @@
+# Univers figé v1 — pas de reconstitution dynamique dans le code initial.
+# Toute évolution (ajout/retrait de titres) = nouvelle version + régénération des données.
+version: "1"
+eligibility: >
+  Large / mid caps US liquides, négociables via IBKR SMART/USD.
+  Pas de filtre ADV ou market cap appliqué en code à ce stade.
+
+stocks:
+  - AAPL
+  - MSFT
+  - GOOGL
+  - AMZN
+  - META
+  - NVDA
+  - TSLA
+  - AMD
+  - AVGO
+  - ORCL
+  - CRM
+  - ADBE
+  - CSCO
+  - IBM
+  - INTC
+  - QCOM
+  - ACN
+  - NOW
+  - TXN
+  - DIS
+  - CMCSA
+  - NFLX
+  - JPM
+  - GS
+  - BAC
+  - MS
+  - BLK
+  - C
+  - WFC
+  - SCHW
+  - AXP
+  - USB
+  - SPGI
+  - ICE
+  - BK
+  - JNJ
+  - UNH
+  - ABBV
+  - LLY
+  - MRK
+  - TMO
+  - ABT
+  - PFE
+  - DHR
+  - ISRG
+  - GILD
+  - WMT
+  - HD
+  - COST
+  - MCD
+  - NKE
+  - KO
+  - PEP
+  - PG
+  - LOW
+  - TJX
+  - SBUX
+  - BKNG
+  - CAT
+  - DE
+  - BA
+  - GE
+  - UPS
+  - RTX
+  - HON
+  - UNP
+  - CSX
+  - LMT
+  - ETN
+  - XOM
+  - CVX
+  - COP
+  - SLB
+  - EOG
+  # LIN excluded in Phase 1: IBKR historical unavailable for current contract mapping.
+  - FCX
+  - NEM
+  - NEE
+  - AMT
+  - PLD
+
+futures:
+  - CL
+  - GC
+  - SI
+  - ZC
+  - ZW
+  - ZS
+  - NG
+  - HG

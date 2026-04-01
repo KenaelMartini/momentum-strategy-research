@@ -1,0 +1,53 @@
+# Paramètres signal & coûts (alignés sur le profil « base saine » du projet Fist).
+# Les clés numériques des poids momentum sont des jours de trading.
+
+momentum_windows: [21, 63, 126, 252]
+momentum_weights:
+  21: 0.10
+  63: 0.20
+  126: 0.30
+  252: 0.40
+
+skip_days: 21
+
+# Calendrier event-driven : monthly | weekly | quarterly | daily (voir rebalance_calendar.py)
+rebalancing_frequency: "monthly"
+
+long_quantile: 0.80
+short_quantile: 0.20
+
+# Combinaison CS / TS (doit sommer à 1.0)
+signal_cs_weight: 0.5
+signal_ts_weight: 0.5
+
+# Vol EWMA (RiskMetrics lambda) et cible pour scaling TS
+ewma_lambda: 0.94
+target_volatility: 0.15
+
+# Minimum d'actifs avec score valide pour quantiles CS
+min_assets_for_cs: 5
+
+# Contraintes portefeuille (documentation / backtests futurs)
+initial_capital: 100000
+max_position_size: 0.10
+# Gross max apres caps ligne (event-driven) ; distinct de max_leverage vectorise
+ed_max_leverage: 1
+# |signal| minimal pour ouvrir un long (> eps) ou short (< -eps)
+ed_signal_entry_eps: 0.02
+# Notionnel relatif des shorts vs longs (compute_weights event-driven)
+ed_short_notional_scale: 0.5
+# Candidats longs / shorts par rebalance.
+# Gel Phase 4 (univers/book): conserver 6/0 (référence univers gagnante).
+event_driven_n_long: 6
+event_driven_n_short: 0
+max_leverage: 1.5
+
+# Coûts (bps)
+transaction_cost_bps: 10
+slippage_bps: 5
+
+risk_free_rate: 0.05
+
+# Fenêtre backtest par défaut (pour scripts ; les données réelles peuvent être plus courtes)
+backtest_start: "2010-01-01"
+backtest_end: "2024-12-31"

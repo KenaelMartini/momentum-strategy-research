@@ -1,0 +1,54 @@
+# Grille Phase 2 (signal) — à exécuter sur Train1 2010-2018.
+# Exemple:
+#   mstrat research-pipeline train1-levers --presets configs/train1_signal_grid_presets.yaml
+
+runs:
+  - name: s2_baseline_ref
+
+  - name: s2_risk_adjust_floor_01
+    config_overrides:
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_VOL_FLOOR_ANNUAL: 0.01
+
+  - name: s2_risk_adjust_floor_02
+    config_overrides:
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_VOL_FLOOR_ANNUAL: 0.02
+
+  - name: s2_risk_adjust_floor_03
+    config_overrides:
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_VOL_FLOOR_ANNUAL: 0.03
+
+  - name: s2_decay_tau_2
+    config_overrides:
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 2
+
+  - name: s2_decay_tau_3
+    config_overrides:
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 3
+
+  - name: s2_decay_tau_4
+    config_overrides:
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 4
+
+  - name: s2_value_010
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.10
+
+  - name: s2_value_015
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+
+  - name: s2_value_020
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.20
+
+  - name: s2_alpha_horizons_30302515
+    strategy_params: configs/alpha_train1/s2_horizons_30302515.yaml
+
+  - name: s2_alpha_cs_ts_7030
+    strategy_params: configs/alpha_train1/s2_cs_ts_7030.yaml
+
+  - name: s2_alpha_cs_ts_3070
+    strategy_params: configs/alpha_train1/s2_cs_ts_3070.yaml

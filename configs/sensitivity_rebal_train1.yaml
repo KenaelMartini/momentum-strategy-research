@@ -1,0 +1,15 @@
+# Sweeps seuil de rebalance (micro-trades) — Train 1 uniquement.
+# mstrat sensitivity-batch --presets configs/sensitivity_rebal_train1.yaml \
+#   --start 2015-01-01 --end 2019-12-31 --output results/institutional/sensitivity_rebal_train1
+
+runs:
+  - name: rebal_thr_0_02
+    rebalance_threshold: 0.02
+  - name: rebal_thr_0_025
+    rebalance_threshold: 0.025
+  - name: rebal_thr_0_03
+    rebalance_threshold: 0.03
+  - name: rebal_thr_0_035
+    rebalance_threshold: 0.035
+  - name: rebal_thr_0_04
+    rebalance_threshold: 0.04

@@ -1,0 +1,65 @@
+# Grille Phase 3 (risque) — Train 1 (2010-2018 via RESEARCH_TRAIN_1_*).
+# Socle signal = décision Phase 2 (s2_value_015) : ne pas retuner le signal ici.
+# Prérequis code : TARGET_VOLATILITY / FAST_DRAWDOWN lus à runtime dans event_driven_risk
+# (sinon strategy_params et config_overrides fast-DD sont sans effet sur le moteur ED).
+
+_phase2_signal_frozen: &phase2_signal
+  ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+
+runs:
+  - name: s3_baseline_ref
+    config_overrides:
+      <<: *phase2_signal
+
+  - name: s3_risk_parity_on
+    config_overrides:
+      <<: *phase2_signal
+      ED_RISK_PARITY_LINE_WEIGHTS_ENABLED: true
+
+  - name: s3_turnover_cap_050
+    config_overrides:
+      <<: *phase2_signal
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.50
+
+  - name: s3_turnover_cap_060
+    config_overrides:
+      <<: *phase2_signal
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.60
+
+  - name: s3_turnover_cap_070
+    config_overrides:
+      <<: *phase2_signal
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.70
+
+  - name: s3_regime_adx015_hurst006
+    config_overrides:
+      <<: *phase2_signal
+      REGIME_ADX_BLEND_WEIGHT: 0.15
+      REGIME_HURST_BLEND_WEIGHT: 0.06
+
+  - name: s3_regime_adx020_hurst010
+    config_overrides:
+      <<: *phase2_signal
+      REGIME_ADX_BLEND_WEIGHT: 0.20
+      REGIME_HURST_BLEND_WEIGHT: 0.10
+
+  - name: s3_regime_adx025_hurst010
+    config_overrides:
+      <<: *phase2_signal
+      REGIME_ADX_BLEND_WEIGHT: 0.25
+      REGIME_HURST_BLEND_WEIGHT: 0.10
+
+  - name: s3_target_vol_012
+    strategy_params: configs/alpha_train1/s3_target_vol_012.yaml
+    config_overrides:
+      <<: *phase2_signal
+
+  - name: s3_target_vol_010
+    strategy_params: configs/alpha_train1/s3_target_vol_010.yaml
+    config_overrides:
+      <<: *phase2_signal
+
+  - name: s3_fast_drawdown_cut_on
+    config_overrides:
+      <<: *phase2_signal
+      FAST_DRAWDOWN_CUT_ENABLED: true

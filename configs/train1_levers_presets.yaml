@@ -1,0 +1,40 @@
+# Campagne leviers d'optimisation — fenêtre Train 1 uniquement (2010-01-01 → 2018-12-31).
+# Exécution :
+#   mstrat research-pipeline train1-levers
+#   mstrat research-pipeline train1-levers --no-write-artifacts   # plus rapide
+#
+# Chaque entrée peut inclure :
+#   - clés existantes (rebalance_threshold, n_long, strategy_params, stress_cost_mult, …)
+#   - config_overrides : dict de noms EXACTS du module config (voir _config_body.txt)
+
+runs:
+  - name: train1_levers_baseline
+
+  - name: train1_levers_reference_signal
+    config_overrides:
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+
+  - name: train1_signal_risk_adjust
+    config_overrides:
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+
+  - name: train1_regime_adx_blend
+    config_overrides:
+      REGIME_ADX_BLEND_WEIGHT: 0.12
+      REGIME_HURST_BLEND_WEIGHT: 0.06
+
+  - name: train1_risk_parity
+    config_overrides:
+      ED_RISK_PARITY_LINE_WEIGHTS_ENABLED: true
+
+  - name: train1_cost_impact
+    config_overrides:
+      BROKER_IMPACT_SLIPPAGE_MULT: 1.25
+
+  - name: train1_turnover_cap
+    config_overrides:
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.35
+
+  - name: train1_multi_signal_value
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15

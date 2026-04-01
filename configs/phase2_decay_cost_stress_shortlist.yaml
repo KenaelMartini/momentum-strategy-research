@@ -1,0 +1,77 @@
+# Phase 2 decay cost stress — baseline + tau3 + tau2 (Train1).
+
+runs:
+  - name: p2_decay_off_cost_1_0
+    stress_cost_mult: 1.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 0
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+  - name: p2_decay_off_cost_1_5
+    stress_cost_mult: 1.5
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 0
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+  - name: p2_decay_off_cost_2_0
+    stress_cost_mult: 2.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 0
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+
+  - name: p2_decay_tau3_cost_1_0
+    stress_cost_mult: 1.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 3
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+  - name: p2_decay_tau3_cost_1_5
+    stress_cost_mult: 1.5
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 3
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+  - name: p2_decay_tau3_cost_2_0
+    stress_cost_mult: 2.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 3
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+
+  - name: p2_decay_tau2_cost_1_0
+    stress_cost_mult: 1.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 2
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+  - name: p2_decay_tau2_cost_1_5
+    stress_cost_mult: 1.5
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 2
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+  - name: p2_decay_tau2_cost_2_0
+    stress_cost_mult: 2.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 2
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true

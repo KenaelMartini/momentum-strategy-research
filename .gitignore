@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+.venv/
+
+# Data & résultats (régénérables)
+data/raw/*.csv
+data/processed/*.csv
+data/processed/*.yaml
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+results/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

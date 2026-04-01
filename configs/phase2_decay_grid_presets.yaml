@@ -1,0 +1,26 @@
+# Phase 2 signal decay grid — Train1 only (2010-2018 via train1-levers).
+
+runs:
+  - name: p2_decay_baseline_off
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 0
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+
+  - name: p2_decay_tau_3
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 3
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+
+  - name: p2_decay_tau_2
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_SIGNAL_RISK_ADJUST_ENABLED: true
+      ED_SIGNAL_HALF_LIFE_REBALANCES: 2
+      ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true

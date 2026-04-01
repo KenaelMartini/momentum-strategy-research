@@ -1,0 +1,33 @@
+runs:
+  - name: s2_baseline_cost_1_0
+    stress_cost_mult: 1.0
+  - name: s2_baseline_cost_1_5
+    stress_cost_mult: 1.5
+  - name: s2_baseline_cost_2_0
+    stress_cost_mult: 2.0
+
+  - name: s2_value_015_cost_1_0
+    stress_cost_mult: 1.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+  - name: s2_value_015_cost_1_5
+    stress_cost_mult: 1.5
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+  - name: s2_value_015_cost_2_0
+    stress_cost_mult: 2.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+
+  - name: s2_value_010_cost_1_0
+    stress_cost_mult: 1.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.10
+  - name: s2_value_010_cost_1_5
+    stress_cost_mult: 1.5
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.10
+  - name: s2_value_010_cost_2_0
+    stress_cost_mult: 2.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.10

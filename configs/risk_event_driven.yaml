@@ -1,0 +1,53 @@
+# Overrides optionnels pour le moteur event-driven (au-delà de strategy_defaults.yaml).
+# Chaque clé est injectée dans le module `config` (voir runtime_config._merge_risk_event_driven).
+# Voir docs/research/RISK_LAYERS_TRAIN1.md — activer UNE couche à la fois sur Train 1.
+# Réentrée / rampe : docs/research/POST_REENTRY_AND_RAMP.md
+#
+# Exemples (décommenter avec parcimonie) :
+# ENABLE_MARKET_OVERLAY: true
+# DEFENSIVE_FLAT_ENABLED: true
+#
+# --- Réentrée suspension (exemples) ---
+# SUSPENSION_REENTRY_REQUIRE_REGIME_CONFIRMATION: true
+# SUSPENSION_COOLDOWN_CALENDAR_DAYS: 28
+# SUSPENSION_REENTRY_DD_FROM_EXIT: -0.04
+#
+# --- Rampe déploiement (exemple) ---
+# SUSPENSION_REENTRY_RAMP_ENABLED: true
+# DEPLOYMENT_RAMP_SCHEDULE: rebalance   # ou "calendar"
+# SUSPENSION_REENTRY_RAMP_REBALANCE_SCALES: [0.4, 0.65, 0.85, 1.0]
+#
+# --- Ajustement risk_scaling post-ancre (exemple ; 0 = désactivé) ---
+# POST_DEPLOYMENT_RISK_ADJUST_CALENDAR_DAYS: 15
+# POST_DEPLOYMENT_RISK_EXTRA_MULT: 0.92
+# POST_DEPLOYMENT_RISK_SCALE_CAP: 1.0
+
+# --- Test : investi seulement si régime marché effectif = TREND (sinon cash) ---
+EVENT_DRIVEN_INVEST_ONLY_MARKET_REGIME_TREND: False
+
+# --- Phase 2 + Phase 3 + Phase 4 (gel recherche Train 1, 2010-2018) ---
+# Décisions: results/institutional/phase3_risk_decision.md et phase4_universe_decision.md
+ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+ED_SIGNAL_RISK_ADJUST_ENABLED: true
+# Phase 2 decay decision: garder OFF (tau=0), variantes tau=2/3 rejetées.
+ED_SIGNAL_HALF_LIFE_REBALANCES: 0
+ED_SIGNAL_DECAY_RESET_WHEN_FLAT: true
+# Phase 3 fast-DD decision: conserver OFF (pas d'impact mesurable sur Train1 avec réglages testés).
+FAST_DRAWDOWN_CUT_ENABLED: false
+FAST_DRAWDOWN_CUT_THRESHOLD: 0.05
+FAST_DRAWDOWN_CUT_WINDOW_DAYS: 10
+FAST_DRAWDOWN_CUT_ONLY_UNDER_STRESS: true
+# Phase 4 defensive-flat decision: conserver OFF (dégrade Sharpe/Calmar sans gain MaxDD).
+DEFENSIVE_FLAT_ENABLED: false
+# Phase 4 gagnante: pas de filtre prix additionnel (référence univers)
+ED_UNIVERSE_MIN_LAST_PRICE: 0.0
+
+# --- Actif pour tests (rampe déploiement + fenêtre post-ancre) ---
+# Repasser en commentaire ou supprimer pour revenir au comportement par défaut.
+SUSPENSION_REENTRY_RAMP_ENABLED: true
+DEPLOYMENT_RAMP_SCHEDULE: rebalance
+SUSPENSION_REENTRY_RAMP_REBALANCE_SCALES: [0.4, 0.65, 0.85, 1.0]
+POST_DEPLOYMENT_RISK_ADJUST_CALENDAR_DAYS: 15
+POST_DEPLOYMENT_RISK_EXTRA_MULT: 0.92
+POST_DEPLOYMENT_RISK_SCALE_CAP: 1.0

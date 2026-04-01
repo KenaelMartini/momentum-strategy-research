@@ -1,0 +1,20 @@
+# Book : N long/short, cap ligne, levier ED, seuil signal — Train 1 uniquement.
+# mstrat sensitivity-batch --presets configs/sensitivity_book_train1.yaml \
+#   --start 2015-01-01 --end 2019-12-31 --output results/institutional/sensitivity_book_train1
+
+runs:
+  - name: book_baseline
+  - name: book_n_8_5
+    n_long: 8
+    n_short: 5
+  - name: book_n_4_3
+    n_long: 4
+    n_short: 3
+  - name: book_maxpos_0_08
+    max_position_size: 0.08
+  - name: book_maxpos_0_12
+    max_position_size: 0.12
+  - name: book_edlev_0_9
+    ed_max_leverage: 0.9
+  - name: book_sigeps_0_025
+    ed_signal_entry_eps: 0.025

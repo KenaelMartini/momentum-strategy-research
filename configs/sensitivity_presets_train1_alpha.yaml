@@ -1,0 +1,17 @@
+# Grille alpha Train 1 — un fichier strategy YAML complet par run (voir configs/alpha_train1/).
+# Exemple :
+#   mstrat sensitivity-batch --presets configs/sensitivity_presets_train1_alpha.yaml \
+#     --start 2015-01-01 --end 2019-12-31 \
+#     --output results/institutional/sensitivity_train1_alpha
+
+runs:
+  - name: train1_alpha_baseline
+    strategy_params: configs/alpha_train1/train1_alpha_baseline.yaml
+  - name: train1_cs_60_40
+    strategy_params: configs/alpha_train1/train1_cs_60_40.yaml
+  - name: train1_cs_40_60
+    strategy_params: configs/alpha_train1/train1_cs_40_60.yaml
+  - name: train1_q_85_15
+    strategy_params: configs/alpha_train1/train1_q_85_15.yaml
+  - name: train1_weights_shift_short_horizon
+    strategy_params: configs/alpha_train1/train1_weights_shift_short_horizon.yaml

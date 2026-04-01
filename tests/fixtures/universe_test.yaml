@@ -1,0 +1,10 @@
+version: "test"
+eligibility: "Jeu de test synthétique (4 actions)."
+
+stocks:
+  - AAA
+  - BBB
+  - CCC
+  - DDD
+
+futures: []

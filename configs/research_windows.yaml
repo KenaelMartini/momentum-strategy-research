@@ -1,0 +1,26 @@
+# Fenêtres recommandées pour recherche / validation / OOS strict.
+# Le moteur n’interprète pas ce fichier seul : utiliser les bornes en CLI ou --train1 / --oos1.
+#
+# Règle institutionnelle : ne pas ajuster les paramètres de stratégie après gel de la spec
+# pour la fenêtre OOS strict ci-dessous.
+
+research_train:
+  description: "Période d’exploration et d’ajustement des paramètres (in-sample)."
+  start: "2010-01-01"
+  end: "2018-12-31"
+  cli_shortcut: "mstrat event-backtest --train1 --skip-baseline"
+
+validation:
+  description: "Fenêtre OOS unique de validation finale (spec gelée)."
+  start: "2019-01-01"
+  end: "2024-12-31"
+  cli_example: 'mstrat event-backtest --start 2019-01-01 --end 2024-12-31 --skip-baseline'
+
+out_of_sample_strict:
+  description: "Alias OOS unique : même fenêtre 2019-2024, un seul lancement de validation."
+  start: "2019-01-01"
+  end: "2024-12-31"
+  cli_example: 'mstrat event-backtest --start 2019-01-01 --end 2024-12-31 --skip-baseline'
+
+# Raccourci existant dans config (_config_body) : OOS après train 1 jusqu’à BACKTEST_END
+oos_after_train1_note: "mstrat event-backtest --oos1 --skip-baseline utilise RESEARCH_OOS_AFTER_TRAIN_1_* → BACKTEST_END."

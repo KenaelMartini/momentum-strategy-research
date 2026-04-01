@@ -1,0 +1,39 @@
+# Stress coûts Phase 4 — univers/book shortlist vs baseline (signal/risk gelés, Train 1).
+# Exécution :
+#   mstrat sensitivity-batch --presets configs/phase4_cost_stress_shortlist.yaml --start 2010-01-01 --end 2018-12-31 --output results/institutional/phase4_cost_stress
+
+runs:
+  - name: p4_baseline_cost_1_0
+    stress_cost_mult: 1.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+  - name: p4_baseline_cost_1_5
+    stress_cost_mult: 1.5
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+  - name: p4_baseline_cost_2_0
+    stress_cost_mult: 2.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+
+  - name: p4_price_floor_5_cost_1_0
+    stress_cost_mult: 1.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_UNIVERSE_MIN_LAST_PRICE: 5.0
+  - name: p4_price_floor_5_cost_1_5
+    stress_cost_mult: 1.5
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_UNIVERSE_MIN_LAST_PRICE: 5.0
+  - name: p4_price_floor_5_cost_2_0
+    stress_cost_mult: 2.0
+    config_overrides:
+      ED_MULTI_SIGNAL_VALUE_WEIGHT: 0.15
+      ED_TURNOVER_CAP_PER_REBALANCE_FRACTION: 0.6
+      ED_UNIVERSE_MIN_LAST_PRICE: 5.0

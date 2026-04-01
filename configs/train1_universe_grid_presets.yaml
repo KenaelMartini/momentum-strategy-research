@@ -1,0 +1,20 @@
+# Grille Phase 4 (univers/liquidité/book sizing) — Train1 2010-2018.
+
+runs:
+  - name: s4_universe_ref
+
+  - name: s4_universe_price_floor_5
+    config_overrides:
+      ED_UNIVERSE_MIN_LAST_PRICE: 5.0
+
+  - name: s4_universe_price_floor_10
+    config_overrides:
+      ED_UNIVERSE_MIN_LAST_PRICE: 10.0
+
+  - name: s4_book_10L_4S
+    n_long: 10
+    n_short: 4
+
+  - name: s4_book_12L_6S
+    n_long: 12
+    n_short: 6

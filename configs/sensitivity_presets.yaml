@@ -1,0 +1,16 @@
+# Scénarios de sensibilité (une dimension à la fois ou combinaisons documentées).
+# Exécution : mstrat sensitivity-batch --presets configs/sensitivity_presets.yaml
+# Un seul scénario : --only baseline
+
+runs:
+  - name: baseline
+  - name: rebal_threshold_0_03
+    rebalance_threshold: 0.03
+  - name: rebal_threshold_0_025
+    rebalance_threshold: 0.025
+  - name: n_positions_8_5
+    n_long: 8
+    n_short: 5
+  - name: n_positions_4_3
+    n_long: 4
+    n_short: 3

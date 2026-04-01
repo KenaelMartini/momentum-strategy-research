@@ -1,0 +1,18 @@
+# Sensibilité réservée à Train 1 (2015-01-01 → 2019-12-31).
+# Exécution :
+#   mstrat sensitivity-batch --presets configs/sensitivity_presets_train1.yaml \
+#     --start 2015-01-01 --end 2019-12-31 \
+#     --output results/institutional/sensitivity_train1
+
+runs:
+  - name: train1_baseline_sensitivity
+  - name: train1_rebal_0_03
+    rebalance_threshold: 0.03
+  - name: train1_rebal_0_035
+    rebalance_threshold: 0.035
+  - name: train1_n_8_5
+    n_long: 8
+    n_short: 5
+  - name: train1_n_4_3
+    n_long: 4
+    n_short: 3

@@ -1,0 +1,25 @@
+momentum_windows: [5, 10, 15, 20]
+momentum_weights:
+  5: 0.25
+  10: 0.25
+  15: 0.25
+  20: 0.25
+
+skip_days: 2
+rebalancing_frequency: "monthly"
+long_quantile: 0.80
+short_quantile: 0.20
+signal_cs_weight: 0.5
+signal_ts_weight: 0.5
+ewma_lambda: 0.94
+target_volatility: 0.15
+min_assets_for_cs: 2
+
+initial_capital: 100000
+max_position_size: 0.10
+max_leverage: 1.5
+transaction_cost_bps: 10
+slippage_bps: 5
+risk_free_rate: 0.05
+backtest_start: "2020-01-01"
+backtest_end: "2022-01-01"
