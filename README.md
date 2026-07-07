@@ -1,8 +1,8 @@
 # Momentum Strategy Research
 
-A structured Python research project for testing and validating momentum-based trading strategies across multiple assets.
+A structured Python study project for learning how momentum-based quantitative strategies can be designed, tested and validated across multiple assets.
 
-The repository focuses on reproducible data pipelines, configurable strategy parameters, vectorised and event-driven backtesting, risk controls, transaction-cost stress tests and out-of-sample validation.
+The repository was initially developed as a training environment for quantitative strategy research. It focuses on reproducible data pipelines, configurable strategy parameters, vectorised and event-driven backtesting, risk controls, transaction-cost stress tests and out-of-sample validation.
 
 ## Project scope
 
@@ -86,11 +86,13 @@ The intended process is:
 7. freeze parameters before out-of-sample evaluation;
 8. archive the configuration and results for reproducibility.
 
-## Current status
+## Project status
 
-This repository is under development and should be treated as a quantitative research environment rather than a production trading system.
+Development is currently paused.
 
-The main priorities are improving reproducibility, strengthening automated tests, documenting assumptions and validating results across larger historical samples.
+The repository remains available as a study and training project documenting work on quantitative strategy development, backtesting methodology, risk controls and research reproducibility. It may be resumed and extended in the future.
+
+It should be treated as a learning environment rather than a production trading system.
 
 ## Limitations
 
