@@ -1,61 +1,104 @@
-# Momentum_Strategy
+# Momentum Strategy Research
 
-Projet structuré pour la recherche quantitative : **univers** (YAML), **ingestion IBKR**, **validation et matrice de prix**, **signal momentum** paramétrable, **backtest minimal** de démonstration.
+A structured Python research project for testing and validating momentum-based trading strategies across multiple assets.
 
-## Prérequis
+The repository focuses on reproducible data pipelines, configurable strategy parameters, vectorised and event-driven backtesting, risk controls, transaction-cost stress tests and out-of-sample validation.
 
-- Python 3.10+
-- TWS ou IB Gateway (paper **7497** par défaut) pour télécharger les prix
+## Project scope
+
+The research workflow includes:
+
+- configurable investment universes defined in YAML;
+- historical data ingestion through Interactive Brokers;
+- price validation and matrix construction;
+- parameterised momentum signals;
+- vectorised backtesting for rapid experimentation;
+- event-driven backtesting designed to avoid look-ahead bias;
+- risk overlays and position constraints;
+- transaction-cost stress testing;
+- sensitivity analysis and out-of-sample validation;
+- archiving of configurations and research runs.
+
+## Requirements
+
+- Python 3.10 or later
+- Trader Workstation or IB Gateway for Interactive Brokers data collection
 
 ## Installation
 
 ```bash
-cd Momentum_Strategy
+git clone https://github.com/KenaelMartini/momentum-strategy-research.git
+cd momentum-strategy-research
 python -m venv .venv
+```
+
+Activate the environment:
+
+```bash
+# Windows
 .venv\Scripts\activate
+
+# macOS / Linux
+source .venv/bin/activate
+```
+
+Install the package and development dependencies:
+
+```bash
 pip install -e ".[dev]"
 ```
 
-## Commandes
+## Main commands
 
-| Action | Commande |
-|--------|----------|
-| Télécharger les prix (TWS requis) | `mstrat fetch --stocks-only` |
-| Forcer le retéléchargement | `mstrat fetch --stocks-only --force` |
-| Sans cache disque | `mstrat fetch --stocks-only --no-cache` |
-| Construire `price_matrix.csv` depuis `data/raw/` | `mstrat build-matrix --stocks-only` |
-| Matrice stricte (tous les tickers) | `mstrat build-matrix --stocks-only --strict` |
-| Backtest **minimal** (vectorisé, démo rapide) | `mstrat minimal-backtest` |
-| Matrice / YAML stratégie personnalisés | `mstrat minimal-backtest --data chemin/matrix.csv --strategy chemin/strategy_defaults.yaml` |
-| Backtest **event-driven** (sans look-ahead, risque Fist) | `mstrat event-backtest --skip-baseline --skip-strategy-benchmark-report` |
-| Période + données explicites | `mstrat event-backtest --start 2020-01-01 --end 2021-12-31 --data data/processed/price_matrix.csv --output results/event_driven` |
-| Module équivalent | `python -m momentum_strategy.event_driven --skip-baseline` |
-| Archiver configs + manifeste (+ dernier run optionnel) | `mstrat archive-run --copy-latest-results` |
-| Grille stress coûts (×1 / ×1.5 / ×2) | `mstrat cost-stress-grid --mults 1.0,1.5,2.0` |
-| Batch sensibilité (YAML) | `mstrat sensitivity-batch --presets configs/sensitivity_presets.yaml` |
-| **Pipeline institutionnel** (Train 1, stress, archive, val, OOS) | `mstrat research-pipeline print-commands` puis ex. `mstrat research-pipeline train1-full` |
-| Seuil rebal. / taille book | `mstrat event-backtest --rebalance-threshold 0.03 --n-long 8 --n-short 5` |
-| Cap ligne / levier ED / seuil signal | `mstrat event-backtest --max-position-size 0.08 --ed-max-leverage 0.9 --ed-signal-entry-eps 0.025` |
-| Rebal / book (guide Train 1) | [docs/research/REBAL_BOOK_RISK_GUIDE.md](docs/research/REBAL_BOOK_RISK_GUIDE.md) |
+| Task | Command |
+|---|---|
+| Download stock prices from IBKR | `mstrat fetch --stocks-only` |
+| Rebuild the local price matrix | `mstrat build-matrix --stocks-only` |
+| Run the minimal vectorised backtest | `mstrat minimal-backtest` |
+| Run the event-driven backtest | `mstrat event-backtest --skip-baseline --skip-strategy-benchmark-report` |
+| Archive configurations and the latest run | `mstrat archive-run --copy-latest-results` |
+| Run a transaction-cost stress grid | `mstrat cost-stress-grid --mults 1.0,1.5,2.0` |
+| Run sensitivity presets | `mstrat sensitivity-batch --presets configs/sensitivity_presets.yaml` |
+| Display the research-pipeline commands | `mstrat research-pipeline print-commands` |
 
-**minimal-backtest** : pipeline `signals.momentum` + rebalancement mensuel simplifié (hors moteur jour-par-jour).
+## Repository structure
 
-**event-backtest** : moteur `event_driven` + `event_driven_risk` (MomentumSignalGeneratorV2) + package `risk` (régime, overlay désactivables via `configs/`). Les paramètres communs viennent de `strategy_defaults.yaml` et du corps Fist embarqué (`runtime_config` + `_config_body.txt`). Surclasser le risque avec `configs/risk_event_driven.yaml`.
+```text
+configs/                 Strategy, universe, IBKR and risk configuration
+src/momentum_strategy/   Installable Python package
+data/raw/                Locally downloaded source data
+data/processed/          Validated matrices and manifests
+docs/                    Methodology and research documentation
+tests/                   Automated tests
+results/                 Generated research outputs, not versioned
+```
 
-Fichiers générés : `data/raw/stock_*.csv`, `data/processed/price_matrix.csv`, `data/processed/price_matrix_manifest.yaml`, résultats sous `results/event_driven/` (non versionnés).
+## Research methodology
 
-## Documentation
+The intended process is:
 
-- [Objectifs](docs/objectifs.md)
-- [Contraintes institutionnelles](docs/contraintes_institutionnelles.md)
-- [Politique données](docs/politique_donnees.md)
-- Recherche / OOS / stress : [docs/research/](docs/research/) — entrée [INSTITUTIONAL_WORKFLOW.md](docs/research/INSTITUTIONAL_WORKFLOW.md) (Train 1 → validation → OOS, critères, gel, gate paper)
+1. define the asset universe and strategy configuration;
+2. collect and validate historical data;
+3. run rapid vectorised tests;
+4. reproduce the strategy in an event-driven engine;
+5. apply risk constraints and cost assumptions;
+6. perform sensitivity and stress analysis;
+7. freeze parameters before out-of-sample evaluation;
+8. archive the configuration and results for reproducibility.
 
-## Arborescence
+## Current status
 
-- `configs/` — univers, IBKR, paramètres de stratégie
-- `src/momentum_strategy/` — package installable
-- `data/raw`, `data/processed` — données locales (non versionnées)
-- `tests/` — tests unitaires
+This repository is under development and should be treated as a quantitative research environment rather than a production trading system.
 
-Le bac à sable expérimental reste dans le dossier voisin `Fist` ; ce dépôt ne doit reprendre que le code stabilisé.
+The main priorities are improving reproducibility, strengthening automated tests, documenting assumptions and validating results across larger historical samples.
+
+## Limitations
+
+- Backtest results depend heavily on data quality, assumptions and the selected sample period.
+- Interactive Brokers data collection requires a correctly configured local TWS or IB Gateway session.
+- Transaction costs, liquidity constraints and implementation effects may differ materially from simplified research assumptions.
+- Historical performance does not predict future results.
+
+## Disclaimer
+
+This repository is provided for educational and independent research purposes only. Nothing published here constitutes financial advice, an investment recommendation, portfolio management or a regulated financial service.
